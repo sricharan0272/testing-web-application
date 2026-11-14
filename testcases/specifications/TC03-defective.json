@@ -1,0 +1,32 @@
+{
+  "test_case": "TC03",
+  "variant": "defective",
+  "criterion": "4.1.2",
+  "secondary_criterion": "2.1.1",
+  "separate_assertions": [
+    "programmatic button role/name",
+    "keyboard activation with Enter and Space"
+  ],
+  "mapping_status": "confirmed_for_name_role_value_proxy",
+  "failure_condition": "A div styled as an action lacks native button semantics and keyboard activation.",
+  "preconditions": [
+    "Load either TC03 variant."
+  ],
+  "interaction_steps": [
+    "Inspect computed role/name.",
+    "Attempt Enter and Space activation."
+  ],
+  "expected_outcome": "The control variant exposes a named button and works with keyboard activation.",
+  "expected_reference_verdict": "FAIL",
+  "expected_sub_assertions": {
+    "keyboard activation with Enter and Space": "FAIL"
+  },
+  "criterion_status": "confirmed_mapping",
+  "manual_verification_method": "Test keyboard activation and inspect the computed role and name.",
+  "manual_validation_status": "pending",
+  "evidence": "https://www.w3.org/TR/WCAG22/#name-role-value; https://www.w3.org/TR/WCAG22/#keyboard",
+  "dom_testability": "Can inspect native element and explicit role, but cannot establish operation without interaction.",
+  "accessibility_tree_testability": "Can inspect computed role and name; keyboard behavior requires interaction.",
+  "limitations": "Name/role/value and keyboard operability are separate assertions and must be reported separately.",
+  "ground_truth_status": "provisional_reference_pending_independent_manual_validation"
+}

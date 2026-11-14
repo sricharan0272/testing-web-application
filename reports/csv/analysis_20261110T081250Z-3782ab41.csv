@@ -1,0 +1,5 @@
+engine,metric_group,sample_size,coverage,confusion_matrix,true_positive,false_positive,false_negative,true_negative,precision,recall,f1,accuracy,precision_ci95,recall_ci95,accuracy_ci95,eligible_reference_variants,not_testable_or_unstable_count,reference_status,variant_count,classified_variant_count,fully_stable_variant_count,not_testable_variant_count,repeatability_rate,unknown_run_count
+DOM,reference_classification,18.0,18.0,"{'labels': ['expected defect', 'expected control'], 'predicted_fail': [9, 0], 'predicted_pass': [0, 9]}",9.0,0.0,0.0,9.0,1.0,1.0,1.0,1.0,"[0.7009, 1.0]","[0.7009, 1.0]","[0.8241, 1.0]",18.0,0.0,provisional_reference_pending_independent_manual_validation,,,,,,
+AX,reference_classification,18.0,18.0,"{'labels': ['expected defect', 'expected control'], 'predicted_fail': [9, 0], 'predicted_pass': [0, 9]}",9.0,0.0,0.0,9.0,1.0,1.0,1.0,1.0,"[0.7009, 1.0]","[0.7009, 1.0]","[0.8241, 1.0]",18.0,0.0,provisional_reference_pending_independent_manual_validation,,,,,,
+AX,repeatability,,,,,,,,,,,,,,,,,,28.0,22.0,22.0,6.0,1.0,12.0
+DOM,repeatability,,,,,,,,,,,,,,,,,,28.0,22.0,22.0,6.0,1.0,12.0

@@ -1,0 +1,27 @@
+{
+  "test_case": "TC14",
+  "variant": "defective",
+  "criterion": "1.4.3",
+  "secondary_criterion": null,
+  "separate_assertions": [],
+  "mapping_status": "extension_requires_rendering_assumptions",
+  "failure_condition": "Normal-size text has contrast below 4.5:1 against its background.",
+  "preconditions": [
+    "Load either TC14 variant."
+  ],
+  "interaction_steps": [
+    "Capture computed foreground/background colors.",
+    "Review rendering and threshold applicability."
+  ],
+  "expected_outcome": "The control meets the 4.5:1 normal-text threshold; the defect falls below it.",
+  "expected_reference_verdict": "FAIL",
+  "expected_sub_assertions": {},
+  "criterion_status": "extension_rendering_assumptions",
+  "manual_verification_method": "Verify effective rendered colors, font size/weight, opacity, and applicable exceptions.",
+  "manual_validation_status": "pending",
+  "evidence": "https://www.w3.org/TR/WCAG22/#contrast-minimum",
+  "dom_testability": "Can estimate contrast from computed styles only for the simple opaque colors in this fixture.",
+  "accessibility_tree_testability": "Not testable from Accessibility Tree semantics alone.",
+  "limitations": "Computed styles do not generally resolve images, gradients, transparency, overlays, or every applicable exception.",
+  "ground_truth_status": "provisional_reference_pending_independent_manual_validation"
+}

@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "purpose": "Predeclared operational test specifications for the SPA fixtures. A PASS applies only to the named assertion, not overall WCAG conformance.",
+  "variants": [
+    "conforming",
+    "defective"
+  ],
+  "test_cases": [
+    {
+      "id": "TC01",
+      "name": "Images",
+      "category": "images",
+      "criterion": "1.1.1",
+      "mapping_status": "confirmed_for_missing_text_alternative",
+      "failure_condition": "The informative image has no text alternative.",
+      "preconditions": [
+        "Load either TC01 variant."
+      ],
+      "interaction_steps": [
+        "Inspect the image and its accessible representation."
+      ],
+      "expected_outcome": "The defective informative image has no alt attribute; the control has a meaningful alternative. Both variants use alt=\"\" on a decorative image.",
+      "manual_verification": "Inspect image purpose and alternative text with a human reviewer; confirm decorative-image treatment where applicable.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#non-text-content",
+      "dom_testability": "Directly testable for alt-attribute presence; semantic appropriateness requires human review.",
+      "accessibility_tree_testability": "Testable for computed image role/name; semantic appropriateness requires human review.",
+      "limitations": "Attribute presence alone cannot prove that alternative text is accurate or useful.",
+      "proposal_category": "A",
+      "proposal_category_name": "static markup"
+    },
+    {
+      "id": "TC02",
+      "name": "Form labels",
+      "category": "forms",
+      "criterion": "1.3.1",
+      "scope_note": "This fixture checks only whether its visible label's for attribute resolves to the email field; it is not a universal label checker.",
+      "secondary_criterion_review": "3.3.2 is not violated by this fixture solely because the label relationship is broken: visible label text exists in both variants; the tested defect is the 1.3.1 programmatic relationship.",
+      "mapping_status": "confirmed_for_programmatic_relationship",
+      "failure_condition": "Visible label references a missing ID, so it is not associated with the email field.",
+      "preconditions": [
+        "Load either TC02 variant."
+      ],
+      "interaction_steps": [
+        "Inspect the visible label and the email field's computed accessible name."
+      ],
+      "expected_outcome": "The control's visible label is programmatically associated in the control variant.",
+      "manual_verification": "Check the label-field relationship in browser accessibility tools and test field identification with a screen reader.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#info-and-relationships",
+      "dom_testability": "Directly testable by resolving the label's for attribute to an existing form control.",
+      "accessibility_tree_testability": "May reveal a name sourced from placeholder rather than the visible label; cannot infer visual persistence from the name alone.",
+      "limitations": "A placeholder can contribute an accessible name but is not evidence that the visible label relationship is correct.",
+      "proposal_category": "A",
+      "proposal_category_name": "static markup"
+    },
+    {
+      "id": "TC03",
+      "name": "Custom controls",
+      "category": "controls",
+      "criterion": "4.1.2",
+      "secondary_criterion": "2.1.1",
+      "separate_assertions": [
+        "programmatic button role/name",
+        "sequential keyboard focusability",
+        "Enter/Space activation after focus"
+      ],
+      "mapping_status": "confirmed_for_name_role_value_proxy",
+      "failure_condition": "A div styled as an action lacks native button semantics and keyboard activation.",
+      "preconditions": [
+        "Load either TC03 variant."
+      ],
+      "interaction_steps": [
+        "Inspect computed role/name.",
+        "Use sequential Tab navigation to test focusability.",
+        "If the target receives focus, test Enter and Space activation."
+      ],
+      "expected_outcome": "The control variant exposes a named button and works with keyboard activation.",
+      "manual_verification": "Test keyboard activation and inspect the computed role and name.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#name-role-value; https://www.w3.org/TR/WCAG22/#keyboard",
+      "dom_testability": "Can inspect native element and explicit role, but cannot establish operation without interaction.",
+      "accessibility_tree_testability": "Can inspect computed role and name; keyboard behavior requires interaction.",
+      "limitations": "Name/role/value, sequential keyboard focusability, and activation after focus are separate assertions. Do not dispatch activation keys when sequential navigation does not reach the target.",
+      "proposal_category": "A",
+      "proposal_category_name": "static markup"
+    },
+    {
+      "id": "TC04",
+      "name": "Accessible names",
+      "category": "controls",
+      "criterion": "2.5.3",
+      "mapping_status": "confirmed",
+      "failure_condition": "The accessible name 'Find' does not contain the visible label 'Search'.",
+      "preconditions": [
+        "Load either TC04 variant."
+      ],
+      "interaction_steps": [
+        "Compare the visible button label with its accessible name."
+      ],
+      "expected_outcome": "The accessible name contains the complete visible label.",
+      "manual_verification": "Inspect the visible label and computed name in the Accessibility pane.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#label-in-name",
+      "dom_testability": "Testable by comparing visible text and aria-label in this controlled fixture.",
+      "accessibility_tree_testability": "Testable by comparing the computed name with text exposed under the button node.",
+      "limitations": "Accessible name computation for arbitrary content can be more complex than this fixture.",
+      "proposal_category": "B",
+      "proposal_category_name": "computed or hidden content"
+    },
+    {
+      "id": "TC05",
+      "name": "Hidden content",
+      "category": "hidden-content",
+      "criterion": "4.1.2",
+      "mapping_status": "act_rule_6cfa84_confirmed_for_sequential_focus_case",
+      "failure_condition": "A focusable button is inside an aria-hidden subtree.",
+      "preconditions": [
+        "Load either TC05 variant."
+      ],
+      "interaction_steps": [
+        "Tab through the page and inspect whether the hidden button is exposed in the Accessibility Tree."
+      ],
+      "expected_outcome": "No focusable control should be simultaneously hidden from assistive technology.",
+      "manual_verification": "Keyboard-test focus and inspect the accessibility representation of the hidden subtree.",
+      "evidence": "https://www.w3.org/WAI/standards-guidelines/act/rules/6cfa84/",
+      "dom_testability": "Testable by detecting a focusable descendant of aria-hidden=true.",
+      "accessibility_tree_testability": "The tree may omit aria-hidden ancestry and can even expose a currently focused descendant; such exposure alone cannot prove that the control was in an aria-hidden subtree.",
+      "limitations": "The ACT rule specifically tests sequentially focusable descendants. A static tree node marked focusable does not alone prove sequential focus; this fixture also runs a keyboard tab sequence.",
+      "proposal_category": "B",
+      "proposal_category_name": "computed or hidden content"
+    },
+    {
+      "id": "TC06",
+      "name": "Shadow DOM component",
+      "category": "components",
+      "criterion": "4.1.2",
+      "mapping_status": "confirmed_for_missing_name_proxy",
+      "failure_condition": "A button in an open shadow root has no accessible name.",
+      "preconditions": [
+        "Load either TC06 variant and wait for component initialization."
+      ],
+      "interaction_steps": [
+        "Inspect the component's button in the DOM and Accessibility Tree."
+      ],
+      "expected_outcome": "The control variant has a named button inside the open shadow root.",
+      "manual_verification": "Inspect the button in browser accessibility tools and test it with keyboard input.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#name-role-value",
+      "dom_testability": "Testable only if the capture explicitly traverses the open shadow root.",
+      "accessibility_tree_testability": "Testable when Chromium includes the shadow descendant and computed name.",
+      "limitations": "Closed shadow roots and browser-specific tree behavior are outside this fixture.",
+      "proposal_category": "B",
+      "proposal_category_name": "computed or hidden content"
+    },
+    {
+      "id": "TC07",
+      "name": "Live regions",
+      "category": "dynamic-content",
+      "criterion": "4.1.3",
+      "mapping_status": "confirmed_for_status_semantics_proxy",
+      "failure_condition": "A dynamically updated status message is not exposed with status/live-region semantics.",
+      "preconditions": [
+        "Load either TC07 variant."
+      ],
+      "interaction_steps": [
+        "Activate Save item.",
+        "Capture the updated message and computed role."
+      ],
+      "expected_outcome": "The control exposes the dynamic message as a status message.",
+      "manual_verification": "Use a screen reader to verify announcement behavior; this is separate from semantic tree inspection.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#status-messages",
+      "dom_testability": "Can inspect role/aria-live attributes and observe the message update.",
+      "accessibility_tree_testability": "Can inspect computed status semantics after the update.",
+      "limitations": "Neither a static DOM snapshot nor an AX tree snapshot proves that a screen reader announced the update.",
+      "proposal_category": "C",
+      "proposal_category_name": "dynamic updates"
+    },
+    {
+      "id": "TC08",
+      "name": "Form errors",
+      "category": "forms",
+      "criterion": "3.3.1",
+      "mapping_status": "interpretive_association_not_sufficient_for_failure",
+      "failure_condition": "Error text is visible but is not programmatically associated with the invalid field.",
+      "preconditions": [
+        "Load either TC08 variant."
+      ],
+      "interaction_steps": [
+        "Submit or inspect the invalid form.",
+        "Compare the error text with the field's accessible description."
+      ],
+      "expected_outcome": "The association is recorded as an implementation difference; criterion conformance remains not testable from association alone.",
+      "manual_verification": "Determine whether the detected error is identified and described in text; separately assess usability of association.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#error-identification",
+      "dom_testability": "Can inspect aria-describedby and the referenced error element.",
+      "accessibility_tree_testability": "May expose description relationships, but this alone does not establish a 3.3.1 failure.",
+      "limitations": "Missing aria-describedby alone does not prove a WCAG 3.3.1 failure when visible explanatory text exists.",
+      "proposal_category": "C",
+      "proposal_category_name": "dynamic updates"
+    },
+    {
+      "id": "TC09",
+      "name": "Tabs and expandable widgets",
+      "category": "widgets",
+      "criterion": "4.1.2",
+      "separate_assertions": [
+        "selected state on activated tab",
+        "expanded state on activated disclosure"
+      ],
+      "mapping_status": "confirmed_for_selected_state_proxy",
+      "failure_condition": "Activating Settings changes the visible panel but leaves aria-selected false.",
+      "preconditions": [
+        "Load either TC09 variant."
+      ],
+      "interaction_steps": [
+        "Activate the Settings tab.",
+        "Inspect selected state and visible panel."
+      ],
+      "expected_outcome": "The selected state reflects the active tab.",
+      "manual_verification": "Operate tabs with keyboard and inspect selected state with a screen reader.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#name-role-value",
+      "dom_testability": "Testable by reading aria-selected after interaction.",
+      "accessibility_tree_testability": "Testable by reading the computed selected state after interaction.",
+      "limitations": "This fixture tests tabs, not all expandable widget patterns.",
+      "proposal_category": "C",
+      "proposal_category_name": "dynamic updates"
+    },
+    {
+      "id": "TC10",
+      "name": "Page title on route change",
+      "category": "spa-navigation",
+      "criterion": "2.4.2",
+      "mapping_status": "confirmed",
+      "failure_condition": "The SPA route changes to Reports while document.title remains Dashboard or a generic title.",
+      "preconditions": [
+        "Load a different SPA page, then navigate to the Reports case."
+      ],
+      "interaction_steps": [
+        "Navigate to Reports without a full reload.",
+        "Inspect document title and root accessible name."
+      ],
+      "expected_outcome": "The document title identifies the current page or purpose.",
+      "manual_verification": "Confirm the title after in-app navigation and with assistive technology/browser UI.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#page-titled",
+      "dom_testability": "Directly testable from the rendered document title.",
+      "accessibility_tree_testability": "Testable through the root web area's computed name when exposed by Chromium.",
+      "limitations": "A title assertion is scoped to the current view and does not establish all route titles.",
+      "proposal_category": "C",
+      "proposal_category_name": "dynamic updates"
+    },
+    {
+      "id": "TC11",
+      "name": "Focus after route change",
+      "category": "focus-management",
+      "criterion": "2.4.3",
+      "mapping_status": "interpretive",
+      "failure_condition": "Route replacement removes the focused element and leaves focus at the document body rather than the new content.",
+      "preconditions": [
+        "Load TC11 defective/conforming variant."
+      ],
+      "interaction_steps": [
+        "Focus the route content button.",
+        "Navigate to destination.",
+        "Inspect the resulting focused element."
+      ],
+      "expected_outcome": "The control moves focus to the new main content; the defective version loses the content focus context.",
+      "manual_verification": "Keyboard-test the sequence and judge whether focus order preserves meaning and operability for the actual flow.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#focus-order",
+      "dom_testability": "Can observe activeElement after navigation.",
+      "accessibility_tree_testability": "Can observe the focused AX node if Chromium exposes it.",
+      "limitations": "Focus loss alone is not automatically a 2.4.3 failure; the criterion mapping is interpretive.",
+      "proposal_category": "D",
+      "proposal_category_name": "behaviour and visual checks"
+    },
+    {
+      "id": "TC12",
+      "name": "Modal dialog focus",
+      "category": "focus-management",
+      "criterion": "2.4.3",
+      "mapping_status": "interpretive",
+      "failure_condition": "Opening a dialog does not move focus into it; closing it does not restore focus to the opener.",
+      "preconditions": [
+        "Load either TC12 variant."
+      ],
+      "interaction_steps": [
+        "Open the dialog and record focused element.",
+        "Close it and record focus restoration."
+      ],
+      "expected_outcome": "The control uses a modal dialog that manages entry and return focus; defect is reported as an operational focus-management observation.",
+      "manual_verification": "Keyboard-test entry, containment, close, and focus restoration; judge the applicable criterion in context.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#focus-order",
+      "dom_testability": "Can observe activeElement, dialog open state, and focus restoration.",
+      "accessibility_tree_testability": "Can inspect dialog role/modal state and the focused node during and after interaction.",
+      "limitations": "Not every dialog focus-management defect independently establishes a 2.4.3 failure.",
+      "proposal_category": "D",
+      "proposal_category_name": "behaviour and visual checks"
+    },
+    {
+      "id": "TC13",
+      "name": "Focus visibility",
+      "category": "visual-accessibility",
+      "criterion": "2.4.7",
+      "mapping_status": "extension_requires_visual_review",
+      "failure_condition": "Keyboard focus has no visible indicator in the controlled button fixture.",
+      "preconditions": [
+        "Load either TC13 variant and focus the target using keyboard."
+      ],
+      "interaction_steps": [
+        "Focus the button with Tab.",
+        "Capture computed focus styles and screenshot."
+      ],
+      "expected_outcome": "The control renders a visible focus indicator.",
+      "manual_verification": "Inspect the rendered focused control at the agreed viewport and contrast conditions.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#focus-visible",
+      "dom_testability": "Computed style is a proxy; visual replacement indicators require rendering inspection.",
+      "accessibility_tree_testability": "Accessibility Tree does not encode visual focus-indicator visibility.",
+      "limitations": "Presence of outline is not equivalent to visibility; color, clipping, occlusion, and other indicators matter.",
+      "proposal_category": "D",
+      "proposal_category_name": "behaviour and visual checks"
+    },
+    {
+      "id": "TC14",
+      "name": "Text contrast",
+      "category": "visual-accessibility",
+      "criterion": "1.4.3",
+      "mapping_status": "extension_requires_rendering_assumptions",
+      "failure_condition": "Normal-size text has contrast below 4.5:1 against its background.",
+      "preconditions": [
+        "Load either TC14 variant."
+      ],
+      "interaction_steps": [
+        "Capture computed foreground/background colors.",
+        "Review rendering and threshold applicability."
+      ],
+      "expected_outcome": "The control meets the 4.5:1 normal-text threshold; the defect falls below it.",
+      "manual_verification": "Verify effective rendered colors, font size/weight, opacity, and applicable exceptions.",
+      "evidence": "https://www.w3.org/TR/WCAG22/#contrast-minimum",
+      "dom_testability": "Can estimate contrast from computed styles only for the simple opaque colors in this fixture.",
+      "accessibility_tree_testability": "Not testable from Accessibility Tree semantics alone.",
+      "limitations": "Computed styles do not generally resolve images, gradients, transparency, overlays, or every applicable exception.",
+      "proposal_category": "D",
+      "proposal_category_name": "behaviour and visual checks"
+    }
+  ]
+}

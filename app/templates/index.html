@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A research test bed for comparing DOM and Accessibility Tree accessibility tests.">
+    <title>Accessibility Testing Research Lab</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#/dashboard">Accessibility Testing Research Lab</a>
+      <nav aria-label="Main navigation">
+        <ul class="navigation">
+          <li><a href="#/dashboard">Dashboard</a></li>
+          <li><a href="#/test-bed">Test bed</a></li>
+          <li><a href="#/about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <div id="view" aria-busy="true"></div>
+      <p id="route-status" class="visually-hidden" role="status" aria-live="polite"></p>
+    </main>
+
+    <footer>
+      <p>Research prototype — automated results are not a substitute for expert accessibility evaluation.</p>
+    </footer>
+  </body>
+</html>

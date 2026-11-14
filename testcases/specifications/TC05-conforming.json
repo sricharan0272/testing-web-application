@@ -1,0 +1,26 @@
+{
+  "test_case": "TC05",
+  "variant": "conforming",
+  "criterion": "4.1.2",
+  "secondary_criterion": null,
+  "separate_assertions": [],
+  "mapping_status": "act_rule_6cfa84_confirmed_for_sequential_focus_case",
+  "failure_condition": "A focusable button is inside an aria-hidden subtree.",
+  "preconditions": [
+    "Load either TC05 variant."
+  ],
+  "interaction_steps": [
+    "Tab through the page and inspect whether the hidden button is exposed in the Accessibility Tree."
+  ],
+  "expected_outcome": "No focusable control should be simultaneously hidden from assistive technology.",
+  "expected_reference_verdict": "PASS",
+  "expected_sub_assertions": {},
+  "criterion_status": "act_rule_6cfa84_confirmed_for_sequential_focus_case",
+  "manual_verification_method": "Keyboard-test focus and inspect the accessibility representation of the hidden subtree.",
+  "manual_validation_status": "pending",
+  "evidence": "https://www.w3.org/WAI/standards-guidelines/act/rules/6cfa84/",
+  "dom_testability": "Testable by detecting a focusable descendant of aria-hidden=true.",
+  "accessibility_tree_testability": "The tree may omit aria-hidden ancestry and can even expose a currently focused descendant; such exposure alone cannot prove that the control was in an aria-hidden subtree.",
+  "limitations": "The ACT rule specifically tests sequentially focusable descendants. A static tree node marked focusable does not alone prove sequential focus; this fixture also runs a keyboard tab sequence.",
+  "ground_truth_status": "provisional_reference_pending_independent_manual_validation"
+}

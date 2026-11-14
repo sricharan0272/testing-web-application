@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:5000/#/case/TC12/defective",
+  "title": "Dialog focus | Accessibility Testing Research Lab",
+  "html": "<html lang=\"en\" data-app-ready=\"true\"><head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"A research test bed for comparing DOM and Accessibility Tree accessibility tests.\">\n    <title>Dialog focus | Accessibility Testing Research Lab</title>\n    <link rel=\"stylesheet\" href=\"/static/css/styles.css\">\n    <script src=\"/static/js/app.js\" defer=\"\"></script>\n  </head>\n  <body>\n    <header class=\"site-header\">\n      <a class=\"brand\" href=\"#/dashboard\">Accessibility Testing Research Lab</a>\n      <nav aria-label=\"Main navigation\">\n        <ul class=\"navigation\">\n          <li><a href=\"#/dashboard\">Dashboard</a></li>\n          <li><a href=\"#/test-bed\" aria-current=\"page\">Test bed</a></li>\n          <li><a href=\"#/about\">About</a></li>\n        </ul>\n      </nav>\n    </header>\n\n    <main id=\"main-content\" tabindex=\"-1\">\n      <div id=\"view\" aria-busy=\"false\">\n        <section class=\"panel test-case\" data-test-case=\"TC12\" data-variant=\"defective\" aria-labelledby=\"page-title\">\n          <p class=\"eyebrow\">TC12 \u00b7 WCAG 2.4.3 \u00b7 Dialog focus management (interpretive)</p>\n          <h1 id=\"page-title\">Dialog focus: defective variant</h1>\n          <div class=\"fixture\"><h2>Dialog focus</h2>\n          <button id=\"dialog-opener\" type=\"button\">Open dialog</button>\n          <div id=\"research-dialog\" role=\"dialog\" aria-labelledby=\"dialog-title\" hidden=\"\">\n            <h3 id=\"dialog-title\">Research dialog</h3>\n            <button id=\"dialog-close\" type=\"button\">Close dialog</button>\n          </div></div>\n          <p class=\"variant-note\">Controlled research fixture. This example does not establish overall WCAG conformance.</p>\n        </section></div>\n      <p id=\"route-status\" class=\"visually-hidden\" role=\"status\" aria-live=\"polite\">Dialog focus: defective variant</p>\n    </main>\n\n    <footer>\n      <p>Research prototype \u2014 automated results are not a substitute for expert accessibility evaluation.</p>\n    </footer>\n  \n</body></html>",
+  "shadow_roots": [],
+  "interaction_states": {
+    "dialog_open": {
+      "active_element": {
+        "tag": "button",
+        "id": "dialog-opener",
+        "role": null
+      },
+      "modal": false
+    },
+    "dialog_closed": {
+      "active_element": {
+        "tag": "body",
+        "id": null,
+        "role": null
+      },
+      "modal": false
+    },
+    "final": {
+      "active_element": {
+        "tag": "body",
+        "id": null,
+        "role": null
+      }
+    }
+  },
+  "before_interaction": {
+    "url": "http://127.0.0.1:5000/#/case/TC12/defective",
+    "title": "Dialog focus | Accessibility Testing Research Lab",
+    "html": "<html lang=\"en\" data-app-ready=\"true\"><head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"A research test bed for comparing DOM and Accessibility Tree accessibility tests.\">\n    <title>Dialog focus | Accessibility Testing Research Lab</title>\n    <link rel=\"stylesheet\" href=\"/static/css/styles.css\">\n    <script src=\"/static/js/app.js\" defer=\"\"></script>\n  </head>\n  <body>\n    <header class=\"site-header\">\n      <a class=\"brand\" href=\"#/dashboard\">Accessibility Testing Research Lab</a>\n      <nav aria-label=\"Main navigation\">\n        <ul class=\"navigation\">\n          <li><a href=\"#/dashboard\">Dashboard</a></li>\n          <li><a href=\"#/test-bed\" aria-current=\"page\">Test bed</a></li>\n          <li><a href=\"#/about\">About</a></li>\n        </ul>\n      </nav>\n    </header>\n\n    <main id=\"main-content\" tabindex=\"-1\">\n      <div id=\"view\" aria-busy=\"false\">\n        <section class=\"panel test-case\" data-test-case=\"TC12\" data-variant=\"defective\" aria-labelledby=\"page-title\">\n          <p class=\"eyebrow\">TC12 \u00b7 WCAG 2.4.3 \u00b7 Dialog focus management (interpretive)</p>\n          <h1 id=\"page-title\">Dialog focus: defective variant</h1>\n          <div class=\"fixture\"><h2>Dialog focus</h2>\n          <button id=\"dialog-opener\" type=\"button\">Open dialog</button>\n          <div id=\"research-dialog\" role=\"dialog\" aria-labelledby=\"dialog-title\" hidden=\"\">\n            <h3 id=\"dialog-title\">Research dialog</h3>\n            <button id=\"dialog-close\" type=\"button\">Close dialog</button>\n          </div></div>\n          <p class=\"variant-note\">Controlled research fixture. This example does not establish overall WCAG conformance.</p>\n        </section></div>\n      <p id=\"route-status\" class=\"visually-hidden\" role=\"status\" aria-live=\"polite\">Dialog focus: defective variant</p>\n    </main>\n\n    <footer>\n      <p>Research prototype \u2014 automated results are not a substitute for expert accessibility evaluation.</p>\n    </footer>\n  \n</body></html>",
+    "shadow_roots": [],
+    "interaction_states": {}
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "test_case": "TC09",
+  "variant": "conforming",
+  "criterion": "4.1.2",
+  "secondary_criterion": null,
+  "separate_assertions": [
+    "selected state on activated tab",
+    "expanded state on activated disclosure"
+  ],
+  "mapping_status": "confirmed_for_selected_state_proxy",
+  "failure_condition": "Activating Settings changes the visible panel but leaves aria-selected false.",
+  "preconditions": [
+    "Load either TC09 variant."
+  ],
+  "interaction_steps": [
+    "Activate the Settings tab.",
+    "Inspect selected state and visible panel."
+  ],
+  "expected_outcome": "The selected state reflects the active tab.",
+  "expected_reference_verdict": "PASS",
+  "expected_sub_assertions": {
+    "expanded state on activated disclosure": "PASS"
+  },
+  "criterion_status": "confirmed_mapping",
+  "manual_verification_method": "Operate tabs with keyboard and inspect selected state with a screen reader.",
+  "manual_validation_status": "pending",
+  "evidence": "https://www.w3.org/TR/WCAG22/#name-role-value",
+  "dom_testability": "Testable by reading aria-selected after interaction.",
+  "accessibility_tree_testability": "Testable by reading the computed selected state after interaction.",
+  "limitations": "This fixture tests tabs, not all expandable widget patterns.",
+  "ground_truth_status": "provisional_reference_pending_independent_manual_validation"
+}

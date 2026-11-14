@@ -1,0 +1,26 @@
+{
+  "test_case": "TC01",
+  "variant": "conforming",
+  "criterion": "1.1.1",
+  "secondary_criterion": null,
+  "separate_assertions": [],
+  "mapping_status": "confirmed_for_missing_text_alternative",
+  "failure_condition": "The informative image has no text alternative.",
+  "preconditions": [
+    "Load either TC01 variant."
+  ],
+  "interaction_steps": [
+    "Inspect the image and its accessible representation."
+  ],
+  "expected_outcome": "The defective informative image has no alt attribute; the control has a meaningful alternative. Both variants use alt=\"\" on a decorative image.",
+  "expected_reference_verdict": "PASS",
+  "expected_sub_assertions": {},
+  "criterion_status": "confirmed_mapping",
+  "manual_verification_method": "Inspect image purpose and alternative text with a human reviewer; confirm decorative-image treatment where applicable.",
+  "manual_validation_status": "pending",
+  "evidence": "https://www.w3.org/TR/WCAG22/#non-text-content",
+  "dom_testability": "Directly testable for alt-attribute presence; semantic appropriateness requires human review.",
+  "accessibility_tree_testability": "Testable for computed image role/name; semantic appropriateness requires human review.",
+  "limitations": "Attribute presence alone cannot prove that alternative text is accurate or useful.",
+  "ground_truth_status": "provisional_reference_pending_independent_manual_validation"
+}

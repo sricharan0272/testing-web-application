@@ -1,0 +1,26 @@
+{
+  "test_case": "TC06",
+  "variant": "defective",
+  "criterion": "4.1.2",
+  "secondary_criterion": null,
+  "separate_assertions": [],
+  "mapping_status": "confirmed_for_missing_name_proxy",
+  "failure_condition": "A button in an open shadow root has no accessible name.",
+  "preconditions": [
+    "Load either TC06 variant and wait for component initialization."
+  ],
+  "interaction_steps": [
+    "Inspect the component's button in the DOM and Accessibility Tree."
+  ],
+  "expected_outcome": "The control variant has a named button inside the open shadow root.",
+  "expected_reference_verdict": "FAIL",
+  "expected_sub_assertions": {},
+  "criterion_status": "confirmed_mapping",
+  "manual_verification_method": "Inspect the button in browser accessibility tools and test it with keyboard input.",
+  "manual_validation_status": "pending",
+  "evidence": "https://www.w3.org/TR/WCAG22/#name-role-value",
+  "dom_testability": "Testable only if the capture explicitly traverses the open shadow root.",
+  "accessibility_tree_testability": "Testable when Chromium includes the shadow descendant and computed name.",
+  "limitations": "Closed shadow roots and browser-specific tree behavior are outside this fixture.",
+  "ground_truth_status": "provisional_reference_pending_independent_manual_validation"
+}

@@ -1,0 +1,26 @@
+{
+  "test_case": "TC02",
+  "variant": "conforming",
+  "criterion": "1.3.1",
+  "secondary_criterion": null,
+  "separate_assertions": [],
+  "mapping_status": "confirmed_for_programmatic_relationship",
+  "failure_condition": "Visible label references a missing ID, so it is not associated with the email field.",
+  "preconditions": [
+    "Load either TC02 variant."
+  ],
+  "interaction_steps": [
+    "Inspect the visible label and the email field's computed accessible name."
+  ],
+  "expected_outcome": "The control's visible label is programmatically associated in the control variant.",
+  "expected_reference_verdict": "PASS",
+  "expected_sub_assertions": {},
+  "criterion_status": "confirmed_mapping",
+  "manual_verification_method": "Check the label-field relationship in browser accessibility tools and test field identification with a screen reader.",
+  "manual_validation_status": "pending",
+  "evidence": "https://www.w3.org/TR/WCAG22/#info-and-relationships",
+  "dom_testability": "Directly testable by resolving the label's for attribute to an existing form control.",
+  "accessibility_tree_testability": "May reveal a name sourced from placeholder rather than the visible label; cannot infer visual persistence from the name alone.",
+  "limitations": "A placeholder can contribute an accessible name but is not evidence that the visible label relationship is correct.",
+  "ground_truth_status": "provisional_reference_pending_independent_manual_validation"
+}

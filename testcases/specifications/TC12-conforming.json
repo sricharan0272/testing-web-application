@@ -1,0 +1,27 @@
+{
+  "test_case": "TC12",
+  "variant": "conforming",
+  "criterion": "2.4.3",
+  "secondary_criterion": null,
+  "separate_assertions": [],
+  "mapping_status": "interpretive",
+  "failure_condition": "Opening a dialog does not move focus into it; closing it does not restore focus to the opener.",
+  "preconditions": [
+    "Load either TC12 variant."
+  ],
+  "interaction_steps": [
+    "Open the dialog and record focused element.",
+    "Close it and record focus restoration."
+  ],
+  "expected_outcome": "The control uses a modal dialog that manages entry and return focus; defect is reported as an operational focus-management observation.",
+  "expected_reference_verdict": "PASS",
+  "expected_sub_assertions": {},
+  "criterion_status": "interpretive",
+  "manual_verification_method": "Keyboard-test entry, containment, close, and focus restoration; judge the applicable criterion in context.",
+  "manual_validation_status": "pending",
+  "evidence": "https://www.w3.org/TR/WCAG22/#focus-order",
+  "dom_testability": "Can observe activeElement, dialog open state, and focus restoration.",
+  "accessibility_tree_testability": "Can inspect dialog role/modal state and the focused node during and after interaction.",
+  "limitations": "Not every dialog focus-management defect independently establishes a 2.4.3 failure.",
+  "ground_truth_status": "provisional_reference_pending_independent_manual_validation"
+}

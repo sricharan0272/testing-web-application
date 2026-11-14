@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "provisional_reference_pending_independent_manual_validation",
+  "reference_freeze": {
+    "verified": false,
+    "commit": null,
+    "note": "The project has no recorded Git history proving that the expected outcomes were frozen before the pilot experiment."
+  },
+  "expected_results_are_predeclared_not_observed": true,
+  "important": "These are predeclared expected outcomes for the narrowly operationalized fixture assertions, not claims of human-tested WCAG conformance. Do not report accuracy/precision/recall as validated ground-truth metrics until an independent reviewer completes the manual_validation fields.",
+  "manual_validation": {
+    "completed": false,
+    "reviewer": null,
+    "date": null,
+    "evidence": [],
+    "note": "No independent human keyboard-only, screen-reader, browser Accessibility pane, or expert adjudication has been completed."
+  },
+  "expected_results": [
+    {"test_case": "TC01", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "confirmed_mapping", "assertion": "informative image has a meaningful alt attribute and decorative image has empty alt", "manual_validation": "pending"},
+    {"test_case": "TC01", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "confirmed_mapping", "assertion": "informative image lacks alt text while decorative image retains empty alt", "manual_validation": "pending"},
+    {"test_case": "TC02", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "confirmed_mapping", "assertion": "visible label references the input ID", "manual_validation": "pending"},
+    {"test_case": "TC02", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "confirmed_mapping", "assertion": "visible label references a missing ID; placeholder is not treated as relationship evidence", "manual_validation": "pending"},
+    {"test_case": "TC03", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "confirmed_mapping", "assertion": "native button exposes its role and name", "sub_assertions": {"sequential keyboard focusability": "PASS", "Enter/Space activation after focus": "PASS"}, "manual_validation": "pending"},
+    {"test_case": "TC03", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "confirmed_mapping", "assertion": "div action lacks button semantics", "sub_assertions": {"sequential keyboard focusability": "FAIL", "Enter/Space activation after focus": "NOT_TESTABLE"}, "manual_validation": "pending"},
+    {"test_case": "TC04", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "confirmed_mapping", "assertion": "accessible name contains visible label Search", "manual_validation": "pending"},
+    {"test_case": "TC04", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "confirmed_mapping", "assertion": "accessible name Find does not contain visible label Search", "manual_validation": "pending"},
+    {"test_case": "TC05", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "act_rule_6cfa84_confirmed_for_sequential_focus_case", "assertion": "tab sequence does not focus a hidden control", "manual_validation": "pending"},
+    {"test_case": "TC05", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "act_rule_6cfa84_confirmed_for_sequential_focus_case", "assertion": "keyboard tab sequence focuses a button hidden from accessibility tree", "manual_validation": "pending"},
+    {"test_case": "TC06", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "confirmed_mapping", "assertion": "shadow-root button has a computed accessible name", "manual_validation": "pending"},
+    {"test_case": "TC06", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "confirmed_mapping", "assertion": "shadow-root button has no computed accessible name", "manual_validation": "pending"},
+    {"test_case": "TC07", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "confirmed_mapping", "assertion": "dynamic status is exposed with status/live semantics after update", "manual_validation": "pending"},
+    {"test_case": "TC07", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "confirmed_mapping", "assertion": "dynamic status text lacks status/live semantics after update", "manual_validation": "pending"},
+    {"test_case": "TC08", "variant": "conforming", "expected_verdict": "NOT_TESTABLE", "criterion_status": "interpretive", "assertion": "association is observable but does not independently establish 3.3.1 conformance", "manual_validation": "pending"},
+    {"test_case": "TC08", "variant": "defective", "expected_verdict": "NOT_TESTABLE", "criterion_status": "interpretive", "assertion": "missing association alone is insufficient to establish a 3.3.1 failure", "manual_validation": "pending"},
+    {"test_case": "TC09", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "confirmed_mapping", "assertion": "activated tab exposes selected=true", "sub_assertions": {"expanded state on activated disclosure": "PASS"}, "manual_validation": "pending"},
+    {"test_case": "TC09", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "confirmed_mapping", "assertion": "activated Settings tab still exposes selected=false", "sub_assertions": {"expanded state on activated disclosure": "FAIL"}, "manual_validation": "pending"},
+    {"test_case": "TC10", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "confirmed_mapping", "assertion": "document title identifies Reports view", "manual_validation": "pending"},
+    {"test_case": "TC10", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "confirmed_mapping", "assertion": "document title remains generic or identifies the prior page", "manual_validation": "pending"},
+    {"test_case": "TC11", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "interpretive", "assertion": "route change focuses the new main content", "manual_validation": "pending"},
+    {"test_case": "TC11", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "interpretive", "assertion": "route change loses focus to document body; criterion impact requires human judgment", "manual_validation": "pending"},
+    {"test_case": "TC12", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "interpretive", "assertion": "modal entry focuses dialog and close restores opener", "manual_validation": "pending"},
+    {"test_case": "TC12", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "interpretive", "assertion": "custom dialog does not move focus or restore focus", "manual_validation": "pending"},
+    {"test_case": "TC13", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "extension_visual_review", "assertion": "visible focus ring rendered in the control", "manual_validation": "pending"},
+    {"test_case": "TC13", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "extension_visual_review", "assertion": "focus outline and replacement are absent in controlled rendering", "manual_validation": "pending"},
+    {"test_case": "TC14", "variant": "conforming", "expected_verdict": "PASS", "criterion_status": "extension_rendering_assumptions", "assertion": "normal-size text contrast is at least 4.5:1", "manual_validation": "pending"},
+    {"test_case": "TC14", "variant": "defective", "expected_verdict": "FAIL", "criterion_status": "extension_rendering_assumptions", "assertion": "normal-size text contrast is below 4.5:1", "manual_validation": "pending"}
+  ]
+}

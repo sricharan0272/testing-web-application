@@ -1,4 +1,4 @@
-# Accessibility Testing Research Lab
+# Accessibility Testing Web Application
 
 A Flask single page application and browser test bed for comparing automated accessibility checks that use rendered DOM evidence with checks that use Chromium's computed Accessibility Tree.
 

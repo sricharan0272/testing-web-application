@@ -401,10 +401,12 @@ def _save_outputs(run_id: str, results: list[dict[str, Any]], output_prefix: str
 
 
 def run_experiment(base_url: str, runs: int) -> tuple[Path, Path]:
+    if runs != 1:
+        raise ValueError("The preliminary pilot runner supports exactly one repetition.")
     catalogue = json.loads(CATALOGUE_PATH.read_text(encoding="utf-8"))
     ground_truth = json.loads(GROUND_TRUTH_PATH.read_text(encoding="utf-8"))
     manual_validation_complete = ground_truth["manual_validation"]["completed"]
-    mode = "confirmatory" if manual_validation_complete else "pilot_unvalidated_reference"
+    mode = "pilot"
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]
     all_results: list[dict[str, Any]] = []
     execution_failures: list[dict[str, Any]] = []
@@ -474,7 +476,7 @@ def run_experiment(base_url: str, runs: int) -> tuple[Path, Path]:
         finally:
             browser.close()
 
-    output_prefix = "pilot" if mode != "confirmatory" else "experiment"
+    output_prefix = "pilot"
     expected_attempt_count = runs * len(catalogue["test_cases"]) * len(catalogue["variants"]) * 2
     bundle = {
         "schema_version": 1,
@@ -499,17 +501,20 @@ def run_experiment(base_url: str, runs: int) -> tuple[Path, Path]:
     return json_path, csv_path
 
 
-def main() -> None:
+def _argument_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Run the SPA's paired DOM/AX accessibility experiment.")
     parser.add_argument("--url", default="http://127.0.0.1:5000")
-    parser.add_argument("--runs", type=int, default=10)
+    parser.add_argument("--runs", type=int, choices=[1], default=1)
+    return parser
+
+
+def main() -> None:
+    parser = _argument_parser()
     args = parser.parse_args()
-    if args.runs < 1:
-        raise SystemExit("--runs must be at least 1")
     json_path, csv_path = run_experiment(args.url, args.runs)
     print(f"Results JSON: {json_path}")
     print(f"Results CSV: {csv_path}")
-    print("Study mode: pilot_unvalidated_reference (independent manual validation is pending).")
+    print("Study mode: preliminary pilot (one repetition).")
     bundle = json.loads(json_path.read_text(encoding="utf-8"))
     print(f"Browser execution failures: {len(bundle['execution_failures'])}")
 

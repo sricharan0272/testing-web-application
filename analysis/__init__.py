@@ -1,1 +1,1 @@
-"""Statistical analysis and figures for captured experiment results."""
+"""Descriptive summaries for the preliminary pilot."""

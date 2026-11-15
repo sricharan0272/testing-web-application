@@ -36,9 +36,12 @@ function updateNavigation(activePath) {
 
 function caseLinks() {
   return Object.entries(caseInfo).map(([id, [label]]) => `
-    <li>
-      <a href="#/case/${id}/conforming">${id}: ${label} (conforming)</a>
-      <a href="#/case/${id}/defective">${id}: ${label} (defective)</a>
+    <li class="case-card">
+      <span class="case-card-title">${id}: ${label}</span>
+      <div class="case-card-links">
+        <a href="#/case/${id}/conforming">Conforming example</a>
+        <a href="#/case/${id}/defective">Defective example</a>
+      </div>
     </li>
   `).join("");
 }
@@ -223,10 +226,11 @@ function renderRoute({ moveFocus = false } = {}) {
     const pages = {
       "/dashboard": {
         title: "Dashboard",
-        description: "A controlled test bed for comparing accessibility checks based on the DOM and the browser Accessibility Tree.",
+        description: "A controlled test bed for comparing checks based on rendered DOM evidence with checks based on Chromium's Accessibility Tree.",
         details: [
-          "Each test case offers conforming and defective variants through stable routes.",
-          "The draft expected outcomes require independent manual and expert review before inferential analysis."
+          "Fourteen cases provide 28 paired conforming and defective examples through stable routes.",
+          "The preliminary pilot exercises each variant once by direct URL and in-app navigation; its results are descriptive.",
+          "Expected outcomes remain provisional until independent manual review is completed."
         ]
       },
       "/test-bed": {

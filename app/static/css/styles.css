@@ -51,6 +51,13 @@ body {
   text-decoration-thickness: 0.18em;
 }
 
+a:focus-visible,
+button:focus-visible,
+main:focus-visible {
+  outline: 3px solid #f0b429;
+  outline-offset: 3px;
+}
+
 main {
   width: min(70rem, calc(100% - 3rem));
   margin: 2rem auto;
@@ -136,8 +143,42 @@ main {
 }
 
 .case-list {
-  columns: 2;
-  max-width: 45rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-card {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid #d6dbea;
+  border-radius: 0.5rem;
+  background: #fbfcff;
+}
+
+.case-card-title {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.case-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.case-card-links a {
+  display: inline-block;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #aeb9d0;
+  border-radius: 0.35rem;
+  color: #172033;
+  background: #fff;
+  text-underline-offset: 0.15em;
 }
 
 .focus-ring:focus {
@@ -200,7 +241,8 @@ footer {
     flex-direction: column;
   }
 
-  .case-list {
-    columns: 1;
+  main {
+    width: min(100% - 2rem, 70rem);
+    margin-block: 1rem;
   }
 }
